@@ -1,0 +1,137 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "expressFront": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/express-front",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              
+                "src/assets/css/core/libs.min.css",
+                "src/assets/vendor/aos/dist/aos.css",
+                "src/assets/css/hope-ui.min.css",
+                "src/assets/css/custom.min.css",
+                "src/assets/css/customizer.min.css",
+                "src/assets/css/rtl.min.css",
+                "src/assets/vendor/fullcalendar/core/main.css",
+                "src/assets/vendor/fullcalendar/daygrid/main.css",
+                "src/assets/vendor/fullcalendar/timegrid/main.css",
+                "src/assets/vendor/fullcalendar/list/main.css",
+                "src/assets/vendor/swiperSlider/swiper-bundle.min.css",
+                "src/assets/css/landing-pages.min.css",
+                "src/styles.css"
+
+
+              ],
+            "scripts": [
+              "src/assets/js/core/libs.min.js",
+              "src/assets/js/core/external.min.js",
+              "src/assets/js/charts/widgetcharts.js",
+              "src/assets/js/charts/vectore-chart.js",
+              "src/assets/js/charts/dashboard.js",
+              "src/assets/js/plugins/fslightbox.js",
+              "src/assets/js/plugins/setting.js",
+              "src/assets/js/plugins/slider-tabs.js",
+              "src/assets/js/plugins/form-wizard.js",
+              "src/assets/vendor/aos/dist/aos.js",
+              "src/assets/vendor/swiperSlider/swiper-bundle.min.js",
+              "src/assets/js/custom.js",
+              "src/assets/js/hope-ui.js",
+              "src/assets/vendor/fullcalendar/core/main.js",
+              "src/assets/vendor/fullcalendar/daygrid/main.js",
+              "src/assets/vendor/fullcalendar/timegrid/main.js",
+              "src/assets/vendor/fullcalendar/list/main.js",
+              "src/assets/vendor/fullcalendar/interaction/main.js",
+              "src/assets/vendor/moment.min.js",
+              "src/assets/js/plugins/calender.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "expressFront:build:production"
+            },
+            "development": {
+              "browserTarget": "expressFront:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "expressFront:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "68fbc450-b4a7-40fa-9e46-91305dbb3a57"
+  }
+}

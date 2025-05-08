@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h5 class="modal-title">{{ isEditMode ? 'Modifier une catégorie' : 'Ajouter une catégorie' }}</h5>
+  <button type="button" class="btn-close" (click)="close()"></button>
+</div>
+<div class="modal-body">
+  <form (ngSubmit)="submit()" [formGroup]="form">
+    <div class="mb-3">
+      <label>Titre</label>
+      <input formControlName="Titre" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label>Description</label>
+      <textarea formControlName="Description" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="image">Image</label>
+      <input type="file" class="form-control" (change)="onFileSelected($event)" />
+    </div>
+
+    <div class="mb-3" *ngIf="image">
+      <img [src]="image" alt="Image sélectionnée" class="img-thumbnail mt-2" width="120" />
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">{{ isEditMode ? 'Mettre à jour' : 'Créer' }}</button>
+  </form>
+</div>

@@ -1,0 +1,32 @@
+<div class="modal show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5)">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ isEditMode ? 'Modifier le service' : 'Ajouter un service' }}</h5>
+          <button type="button" class="btn-close" (click)="close()"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="titre" class="form-label">Titre</label>
+            <input id="titre" type="text" formControlName="Titre" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" formControlName="Description" class="form-control"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="categorie" class="form-label">Catégorie</label>
+            <select id="categorie" formControlName="categorieId" class="form-select">
+              <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.Titre }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" (click)="close()">Annuler</button>
+          <button class="btn btn-primary" type="submit">{{ isEditMode ? 'Mettre à jour' : 'Ajouter' }}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

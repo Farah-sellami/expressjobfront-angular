@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom iq-navbar">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a routerLink="/dashboard" class="navbar-brand d-flex align-items-center">
+      <svg class="icon-30 text-primary me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 0L16 4v8l-8 4-8-4V4z"/>
+      </svg>
+      <h4 class="logo-title mb-0">EXPRESS JOB</h4>
+    </a>
+
+    <!-- Bouton menu mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarAdmin" aria-controls="navbarAdmin" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Contenu collapsible -->
+    <div class="collapse navbar-collapse" id="navbarAdmin">
+      <!-- Menu -->
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 flex-column flex-lg-row text-center">
+        <!-- <li class="nav-item"><a routerLink="/dashboard" routerLinkActive="active" class="nav-link">Dashboard</a></li> -->
+        <!-- <li class="nav-item"><a routerLink="/profile" routerLinkActive="active" class="nav-link">Profil</a></li> -->
+        <li class="nav-item"><a routerLink="/listUsers" routerLinkActive="active" class="nav-link">Utilisateurs</a></li>
+        <li class="nav-item"><a routerLink="/listServices" routerLinkActive="active" class="nav-link">Services</a></li>
+        <li class="nav-item"><a routerLink="/listCategories" routerLinkActive="active" class="nav-link">Catégories</a></li>
+        <li class="nav-item"><a routerLink="/listDemandeService" routerLinkActive="active" class="nav-link">Demandes Services</a></li>
+      </ul>
+
+      <!-- Profil utilisateur -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img *ngIf="user?.avatar" [src]="user.avatar" class="img-fluid avatar avatar-50 avatar-rounded" alt="User-Profile">
+            <div class="caption ms-2 d-none d-md-block">
+              <h6 class="mb-0 caption-title">{{ user.name || 'Utilisateur' }}</h6>
+            </div>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li><a routerLink="/profile" class="dropdown-item">Profil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><button class="dropdown-item" (click)="logout()">Déconnexion</button></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

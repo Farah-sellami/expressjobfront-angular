@@ -1,0 +1,87 @@
+<section class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Découvrir les meilleurs services</h1>
+    <p>
+      Trouvez les meilleurs professionnels pour tous vos besoins en un simple clic
+    </p>
+
+    <div class="hero-buttons">
+      <a routerLink="/services" class="btn btn-outline">Explorer nos services</a>
+      <a routerLink="/register" class="btn btn-primary">Devenir prestataire</a>
+    </div>
+
+    <form (submit)="onSearch($event)" class="search-form">
+      <input
+        type="text"
+        name="search"
+        [(ngModel)]="searchTerm"
+        placeholder="Rechercher un service..."
+      />
+      <button type="submit">Rechercher</button>
+    </form>
+  </div>
+</section>
+<br>
+<br>
+
+<div class="container">
+  <h2 class="title">Catégories Populaires</h2>
+  <p class="subtitle">Explorez les catégories les plus consultées par nos utilisateurs.</p>
+
+  <div class="card-grid">
+    <div class="card" *ngFor="let categorie of categories">
+      <div class="card-img">
+        <img [src]="categorie.image || 'assets/default-category.jpg'" alt="{{ categorie.Titre }}">
+        <span class="badge">Populaire</span>
+      </div>
+      <div class="card-body">
+        <h3>{{ categorie.Titre }}</h3>
+        <div class="rating">
+          <span class="stars">★★★★★</span>
+          <span class="note">(5.0)</span>
+        </div>
+        <a href="#" class="voir-plus">Voir plus</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-container">
+    <button class="btn-primary" (click)="goToDemandeService()">Voir toutes les catégories</button>
+  </div>
+</div>
+ <br>
+ <br>
+ <section class="how-it-works">
+  <h2>Comment ça marche ?</h2>
+  <p class="subtitle">En quelques étapes simples, trouvez le service dont vous avez besoin</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="icon">🔍</div>
+      <h3>Recherchez un service</h3>
+      <p>Parcourez notre large sélection de services professionnels</p>
+    </div>
+
+    <div class="step">
+      <div class="icon">👤</div>
+      <h3>Choisissez un professionnel</h3>
+      <p>Consultez les profils et avis pour faire le meilleur choix</p>
+    </div>
+
+    <div class="step">
+      <div class="icon">📅</div>
+      <h3>Planifiez votre service</h3>
+      <p>Réservez à la date et l'heure qui vous conviennent</p>
+    </div>
+
+    <div class="step">
+      <div class="icon">✅</div>
+      <h3>Profitez du service</h3>
+      <p>Détendez-vous pendant que les experts s'occupent de tout</p>
+    </div>
+  </div>
+</section>
+
+
+<app-avis></app-avis>

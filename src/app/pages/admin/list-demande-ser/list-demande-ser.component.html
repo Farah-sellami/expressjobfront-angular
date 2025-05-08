@@ -1,0 +1,90 @@
+
+<main class="main-content">
+  <div class="position-relative iq-banner">
+    <div class="iq-navbar-header" style="height: 215px">
+      <div class="container-fluid iq-container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="flex-wrap d-flex justify-content-between align-items-center">
+              <div>
+                <h1></h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iq-header-img">
+        <img src="../../assets/images/dashboard/top-header.png" alt="header" class="theme-color-default-img img-fluid w-100 h-100 animated-scaleX" />
+        <img src="../../assets/images/dashboard/top-header1.png" alt="header" class="theme-color-purple-img img-fluid w-100 h-100 animated-scaleX" />
+        <img src="../../assets/images/dashboard/top-header2.png" alt="header" class="theme-color-blue-img img-fluid w-100 h-100 animated-scaleX" />
+        <img src="../../assets/images/dashboard/top-header3.png" alt="header" class="theme-color-green-img img-fluid w-100 h-100 animated-scaleX" />
+        <img src="../../assets/images/dashboard/top-header4.png" alt="header" class="theme-color-yellow-img img-fluid w-100 h-100 animated-scaleX" />
+        <img src="../../assets/images/dashboard/top-header5.png" alt="header" class="theme-color-pink-img img-fluid w-100 h-100 animated-scaleX" />
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid content-inner mt-n5 py-0">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between">
+            <div class="header-title">
+              <h4 class="card-title">Liste des demandes service</h4>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Client</th>
+                    <th>Professionnel</th>
+                    <th>Date demande</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let demande of currentDemandeservices">
+                    <td>{{ demande.client?.name }}</td>
+                    <td>{{ demande.professionnel?.name }}</td>
+                    <td>{{ demande.DateExecution | date: 'shortDate' }}</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Client</th>
+                    <th>Professionnel</th>
+                    <th>Date demande</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center mt-3">
+              <ng-container *ngIf="pageCount > 1">
+                <ul class="pagination">
+                  <li class="page-item" [class.disabled]="currentPage === 0">
+                    <a class="page-link" (click)="handlePageChange(currentPage - 1)">Précédent</a>
+                  </li>
+
+                  <li *ngFor="let page of [].constructor(pageCount); let i = index"
+                      class="page-item" [class.active]="i === currentPage">
+                    <a class="page-link" (click)="handlePageChange(i)">{{ i + 1 }}</a>
+                  </li>
+
+                  <li class="page-item" [class.disabled]="currentPage >= pageCount - 1">
+                    <a class="page-link" (click)="handlePageChange(currentPage + 1)">Suivant</a>
+                  </li>
+                </ul>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-footer-admin></app-footer-admin>
+</main>

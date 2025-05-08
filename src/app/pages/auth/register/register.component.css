@@ -1,0 +1,15 @@
+.card {
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+label {
+  font-weight: 500;
+}
+
+.form-control, .form-select {
+  min-height: 44px;
+  border-radius: 0.5rem;
+}
+
+

@@ -1,0 +1,9 @@
+<!-- Affiche la navbar selon le rôle -->
+<app-admin-navbar *ngIf="!isLoginOrRegisterPage() && isAdmin()"></app-admin-navbar>
+<app-navbar *ngIf="!isLoginOrRegisterPage()&& !isAdmin()"></app-navbar>
+
+<!-- Affiche les composants de page en fonction de la route -->
+<router-outlet></router-outlet>
+
+<!-- Affiche le footer seulement si l'utilisateur n'est pas sur login/register -->
+<app-footer *ngIf="!isLoginOrRegisterPage() && isClientOrPro()"></app-footer>

@@ -1,0 +1,142 @@
+<div class="wrapper">
+  <section class="login-content min-vh-100">
+    <div class="row m-0 align-items-stretch bg-white h-100">
+
+      <!-- Image à gauche (facultative, 4 colonnes) -->
+      <div class="col-md-4 d-none d-md-block bg-primary p-0">
+        <img src="../../assets/images/auth/05.png" class="img-fluid w-100 h-100 object-fit-cover" alt="images">
+      </div>
+
+      <!-- Formulaire -->
+      <div class="col-md-8 d-flex align-items-center">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body">
+
+                  <!-- Logo & titre -->
+                  <div class="text-center mb-4">
+                    <a routerLink="/" class="navbar-brand d-flex align-items-center justify-content-center">
+                      <svg class="text-primary icon-30 me-2" viewBox="0 0 30 30" fill="none">
+                        <rect x="-0.757" y="19.243" width="28" height="4" rx="2" transform="rotate(-45 -0.757 19.243)" fill="currentColor" />
+                        <rect x="7.728" y="27.728" width="28" height="4" rx="2" transform="rotate(-45 7.728 27.728)" fill="currentColor" />
+                        <rect x="10.537" y="16.395" width="16" height="4" rx="2" transform="rotate(45 10.537 16.395)" fill="currentColor" />
+                        <rect x="10.556" y="-0.556" width="28" height="4" rx="2" transform="rotate(45 10.556 -0.556)" fill="currentColor" />
+                      </svg>
+                      <h4 class="logo-title mb-0">Express Job</h4>
+                    </a>
+                    <h2 class="mt-3">Sign Up</h2>
+                    <p>Create your Express Job account.</p>
+                  </div>
+
+                  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="row g-3">
+
+                      <!-- Full Name & Email -->
+                      <div class="col-md-6">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" formControlName="name" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" formControlName="email" required>
+                      </div>
+
+                      <!-- Phone & Ville -->
+                      <div class="col-md-6">
+                        <label for="telephone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="telephone" formControlName="telephone">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="location" class="form-label">Ville</label>
+                        <select id="location" formControlName="location" class="form-select" required>
+                          <option value="" disabled selected>Choisir une ville</option>
+                          <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                        </select>
+                      </div>
+
+                      <!-- Password & Confirm -->
+                      <div class="col-md-6">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" formControlName="password" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="password_confirmation" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="password_confirmation" formControlName="password_confirmation" required>
+                      </div>
+
+                      <!-- Avatar -->
+                      <div class="col-md-6">
+                        <label for="avatar" class="form-label">Upload Avatar</label>
+                        <input type="file" (change)="onFileSelected($event)" class="form-control" />
+                      </div>
+                      <div class="col-md-6" *ngIf="avatar">
+                        <img [src]="avatar" alt="Uploaded Avatar" class="img-thumbnail mt-2" width="120">
+                      </div>
+
+                      <!-- Rôle -->
+                      <div class="col-md-6">
+                        <label for="role" class="form-label">Role</label>
+                        <select class="form-select" id="role" formControlName="role" required>
+                          <option value="">-- Select Role --</option>
+                          <option value="client">Client</option>
+                          <option value="professionnel">Professionnel</option>
+                        </select>
+                      </div>
+
+                      <!-- Champs spécifiques au professionnel -->
+                      <ng-container *ngIf="registerForm.get('role')?.value === 'professionnel'">
+                        <div class="col-md-6">
+                          <label for="service_id" class="form-label">Service</label>
+                          <select class="form-select" id="service_id" formControlName="service_id" required>
+                            <option *ngFor="let service of services" [value]="service.id">{{ service.Titre }}</option>
+                          </select>
+                        </div>
+
+                        <div class="col-md-12">
+                          <label for="competence" class="form-label">Compétence</label>
+                          <textarea class="form-control" id="competence" formControlName="competence" rows="2" required></textarea>
+                        </div>
+
+                        <div class="col-md-6">
+                          <label for="startTime" class="form-label">Heure de début</label>
+                          <input type="time" id="startTime" class="form-control" formControlName="startTime" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="endTime" class="form-label">Heure de fin</label>
+                          <input type="time" id="endTime" class="form-control" formControlName="endTime" required>
+                        </div>
+                      </ng-container>
+
+                      <!-- Conditions -->
+                      <div class="col-12 text-center">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" formControlName="terms" required>
+                          <label class="form-check-label">I agree with the terms of use</label>
+                        </div>
+                      </div>
+
+                      <!-- Bouton -->
+                      <div class="col-12 d-flex justify-content-center mb-3">
+                        <button class="btn btn-primary w-auto px-4 py-2" type="submit" [disabled]="registerForm.invalid">Sign Up</button>
+                      </div>
+
+                      <!-- Lien -->
+                      <div class="col-12 text-center">
+                        <p class="mt-2 mb-1">or sign in with other accounts?</p>
+                        <p>Already have an account? <a routerLink="/login">Sign In</a></p>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>

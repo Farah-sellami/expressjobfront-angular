@@ -1,0 +1,53 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#admin-layout {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: #fff;
+  transition: width 0.3s ease;
+  border-right: 1px solid #dee2e6;
+  padding: 1rem 0.5rem;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar .sidebar-header {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.sidebar .sidebar-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar-menu .nav-link {
+  color: #333;
+  padding: 0.5rem 1rem;
+  transition: background 0.2s;
+}
+
+.sidebar-menu .nav-link:hover {
+  background-color: #f8f9fa;
+}
+
+.navbar-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.main-content {
+  background-color: #f1f3f5;
+  overflow-y: auto;
+}

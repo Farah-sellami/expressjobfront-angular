@@ -1,0 +1,34 @@
+<div class="professionals-container">
+  <h1 class="professionals-title">Découvrez nos professionnels qualifiés en {{serviceTitre}} prêts à vous aider</h1>
+
+  <div class="professionals-list">
+    <div class="professional-card" *ngFor="let pro of professionnels">
+      <div class="card-header">
+        <div class="pro-avatar">
+          <img [src]="pro.avatar || 'assets/default-avatar.jpg'" alt="{{ pro.name }}">
+        </div>
+        <div class="pro-main-info">
+          <h2 class="pro-name">{{ pro.name }}</h2>
+          <div class="pro-rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating">({{ pro.note_moyenne || '4.8' }})</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="pro-detail">
+          <strong>Localisation:</strong> {{ pro.location || 'Non spécifiée' }}
+        </div>
+        <div class="pro-detail">
+          <strong>Compétences:</strong> {{ pro.competence || 'Expérience confirmée' }}
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button class="btn btn-profile" (click)="viewProfile(pro.id)">Voir le profil</button>
+        <button class="btn btn-contact" (click)="contactProfessional(pro.id)">Contacter</button>
+      </div>
+    </div>
+  </div>
+</div>

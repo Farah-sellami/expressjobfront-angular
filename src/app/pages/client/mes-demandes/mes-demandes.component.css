@@ -1,0 +1,63 @@
+/* Style du tableau */
+.table-responsive {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+/* Badges de statut */
+.badge {
+  padding: 0.5em 0.75em;
+  border-radius: 50px;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+
+.bg-warning {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.bg-success {
+  background-color: #198754;
+  color: white;
+}
+
+.bg-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.bg-info {
+  background-color: #0dcaf0;
+  color: white;
+}
+
+.bg-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Pagination */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+}
+
+.my-pagination {
+  margin-top: 1rem;
+}
+
+/* Boutons d'action */
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
