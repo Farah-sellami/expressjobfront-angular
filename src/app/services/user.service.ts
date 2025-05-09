@@ -13,8 +13,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  // Récupérer tous les utilisateurs avec pagination
-  // user.service.ts
+  // Récupérer tous les utilisateurs sans pagination
+
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/list`);  }
 
@@ -40,28 +40,29 @@ export class UserService {
     return this.http.delete<User>(`${this.apiUrl}/profile`);
   }
 
-  // Compter les professionnels
-  countProfessionnels(): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/count-professionnels`);
-  }
+ // Compter les professionnels
+ countProfessionnels(): Observable<number> {
+  return this.http.get<number>(`${this.apiUrl}/count-professionnels`)
+}
 
-  // Compter les clients
-  countClients(): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/count-clients`);
-  }
+// Compter les clients
+countClients(): Observable<number> {
+  return this.http.get<number>(`${this.apiUrl}/count-clients`)
 
-  getUsersWithPagination(perPage: number, page: number, role: string | null = null): Observable<any> {
-    let url = `${this.apiUrl}?per_page=${perPage}&page=${page}`;
-    if (role) {
-      url += `&role=${role}`;
-    }
-    return this.http.get<any>(url);
-  }
+}
+
+  // getUsersWithPagination(perPage: number, page: number, role: string | null = null): Observable<any> {
+  //   let url = `${this.apiUrl}?per_page=${perPage}&page=${page}`;
+  //   if (role) {
+  //     url += `&role=${role}`;
+  //   }
+  //   return this.http.get<any>(url);
+  // }
 
 // user.service.ts
 deleteUser(id: number): Observable<User> {
   return this.http.delete<User>(`${this.apiUrl}/${id}`);
 }
 
-
 }
+
